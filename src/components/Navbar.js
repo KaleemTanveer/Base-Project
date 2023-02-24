@@ -32,24 +32,18 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-    console.log("dsfdsffsd");
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
   return (
-    <AppBar style={{ background: "#2E3B55", mx: 6 }} position="static">
-      <Container sx={{ mx: 6 }}>
+    <AppBar style={{ background: "#2E3B55"}} position="static">
+      <Container >
         <Toolbar disableGutters>
-          <Toolbar>
-            <img style={{height:20}}
-              src={logo}
-            />
-          </Toolbar>
           
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          {/* <Typography
+          
+          <Typography
             variant="h6"
             noWrap
             component="a"
@@ -63,9 +57,12 @@ function ResponsiveAppBar() {
               color: "inherit",
               textDecoration: "none",
             }}
+            
           >
-            TMDB
-          </Typography> */}
+            <img style={{height:20}}
+              src={logo}
+            />
+          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -103,7 +100,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          
           <Typography
             variant="h5"
             noWrap
@@ -120,7 +117,9 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+           <img style={{height:20}}
+              src={logo}
+            />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -134,24 +133,24 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            {/* <Tooltip > */}
-            {/* <IconButton>
-              <SearchIcon sx={{ my: 2, color: "white" }} />
-            </IconButton> */}
-            {/* </Tooltip> */}
-            {/* <Menu
-              sx={{ mt: "45px" }}
+           <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
@@ -161,7 +160,7 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu> */}
+            </Menu>
           </Box>
         </Toolbar>
       </Container>
