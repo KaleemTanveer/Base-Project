@@ -12,16 +12,22 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import SearchIcon from "@mui/icons-material/Search";
-import logo from '../assets/logo.png'
+import logo from "../assets/logo.png";
+import { NavLink } from "react-router-dom";
 
+const pages = ["Movies", "TV Shows", "People", "More"];
+const movies = ["Popular", "Now Playing", "Upcomming", "Top Rated"];
+const tvShows = ["Popular", "Airing Today", "On TV", "Top Rated"];
+const people = ["Popular People"];
+const more = ["Discussions", "Leaderboard", "Support", "API"];
 
-const pages = ["Movies", "TV Shows", "People"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
-function ResponsiveAppBar() {
+function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElUser1, setAnchorElUser1] = React.useState(null);
+  const [anchorElUser2, setAnchorElUser2] = React.useState(null);
+
+  const [currentValue, setCurrentValue] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -29,20 +35,38 @@ function ResponsiveAppBar() {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
+  const handleOpenUserMenu1 = (event) => {
+    setAnchorElUser1(event.currentTarget);
+  };
+  const handleOpenUserMenu2 = (event) => {
+    setAnchorElUser2(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (event) => {
+    <NavLink
+        to={`/${event.currentTarget.innerText}`}
+        
+      >
+        
+      </NavLink>
+      console.log(event.currentTarget.innerText);
     setAnchorElUser(null);
   };
+  const handleCloseUserMenu1 = (event) => {
+    console.log(event.currentTarget.innerText);
+    setAnchorElUser1(null);
+  };
+  const handleCloseUserMenu2 = () => {
+    setAnchorElUser2(null);
+  };
+
   return (
-    <AppBar style={{ background: "#2E3B55"}} position="static">
-      <Container >
+    <AppBar sx={{ bgcolor: "#002244" }} position="static">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
-          
-          
           <Typography
             variant="h6"
             noWrap
@@ -57,11 +81,8 @@ function ResponsiveAppBar() {
               color: "inherit",
               textDecoration: "none",
             }}
-            
           >
-            <img style={{height:20}}
-              src={logo}
-            />
+            <img style={{ height: 20 }} src={logo} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -100,7 +121,6 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          
           <Typography
             variant="h5"
             noWrap
@@ -117,54 +137,107 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-           <img style={{height:20}}
-              src={logo}
-            />
+            <img style={{ height: 20 }} src={logo} />
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
 
-           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {/* --------------------------Movie-------------------------- */}
+
+            <Button
+              onClick={handleOpenUserMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Movies
+            </Button>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {movies.map((movie) => (
+                <MenuItem key={movie} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{movie}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+
+            {/* --------------------------------TV Show--------------------------------- */}
+
+            <Button
+              onClick={handleOpenUserMenu1}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              TV Shows
+            </Button>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser1}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser1)}
+              onClose={handleCloseUserMenu1}
+            >
+              {tvShows.map((tvShow) => (
+                <MenuItem key={tvShow} onClick={handleCloseUserMenu1}>
+                  <Typography textAlign="center">{tvShow}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+
+            {/* ---------------------------------People-------------------------------- */}
+
+            <Button
+              onClick={handleOpenUserMenu2}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              People
+            </Button>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser2}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser2)}
+              onClose={handleCloseUserMenu2}
+            >
+              {people.map((people) => (
+                <MenuItem key={people} onClick={handleCloseUserMenu2}>
+                  <Typography textAlign="center">{people}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
+          <Box sx={{ flexGrow: 0 }}></Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default NavBar;

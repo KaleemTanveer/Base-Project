@@ -1,10 +1,23 @@
 import './App.css';
-import ResponsiveAppBar from './components/Navbar';
+
+import { CssBaseline } from "@mui/material";
+import NavBar from './components/NavBar';
+import SideBar from './components/Sidebar';
+import { Home } from './components/Home';
+import { Footer } from './components/Footer';
+import { HomeBody } from './components/HomeBody';
 function App() {
   return (
-    <div className="App">
-      <ResponsiveAppBar/>
-    </div>
+    <>
+    
+      <CssBaseline/>
+      <NavBar/>
+      <Home/>
+      <HomeBody/>
+      <Footer/>
+      
+      
+    </>
   );
 }
 
