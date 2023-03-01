@@ -2,10 +2,10 @@ import React from "react";
 import { Container, Grid, Typography, Button } from "@mui/material";
 import footer from "../assets/footer.png";
 import { Bolt } from "@mui/icons-material";
-export const Footer = () => {
+ const Footer = () => {
   return (
     <>
-      <Container sx={{ bgcolor: "#002244", mb: 0 }} maxWidth="xl">
+      <Container sx={{ bgcolor: "#002244", mb: 0,width:"100%" }} maxWidth="xl">
         <Grid container sx={{ pt: 1, pb: 9 }}>
           <Grid item xs={2} sm={2} md={2} lg={2}></Grid>
           <Grid
@@ -87,3 +87,4 @@ export const Footer = () => {
     </>
   );
 };
+export default Footer

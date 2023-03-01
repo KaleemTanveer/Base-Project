@@ -11,9 +11,8 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 const pages = ["Movies", "TV Shows", "People", "More"];
 const movies = ["Popular", "Now Playing", "Upcomming", "Top Rated"];
@@ -21,7 +20,7 @@ const tvShows = ["Popular", "Airing Today", "On TV", "Top Rated"];
 const people = ["Popular People"];
 const more = ["Discussions", "Leaderboard", "Support", "API"];
 
-function NavBar() {
+const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElUser1, setAnchorElUser1] = React.useState(null);
@@ -46,17 +45,11 @@ function NavBar() {
     setAnchorElNav(null);
   };
   const handleCloseUserMenu = (event) => {
-    <NavLink
-        to={`/${event.currentTarget.innerText}`}
-        
-      >
-        
-      </NavLink>
-      console.log(event.currentTarget.innerText);
+    console.log(`/${event.currentTarget.innerText}`);
     setAnchorElUser(null);
   };
   const handleCloseUserMenu1 = (event) => {
-    console.log(event.currentTarget.innerText);
+    // console.log(event.currentTarget.innerText);
     setAnchorElUser1(null);
   };
   const handleCloseUserMenu2 = () => {
@@ -167,7 +160,14 @@ function NavBar() {
             >
               {movies.map((movie) => (
                 <MenuItem key={movie} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{movie}</Typography>
+                  <Typography textAlign="center">
+                    <NavLink
+                      style={{ color: "black", textDecoration: "none" }}
+                      to={`/${movie}`}
+                    >
+                      {movie}
+                    </NavLink>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -239,5 +239,5 @@ function NavBar() {
       </Container>
     </AppBar>
   );
-}
+};
 export default NavBar;

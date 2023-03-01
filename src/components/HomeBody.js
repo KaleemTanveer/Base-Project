@@ -15,19 +15,7 @@ import React from "react";
 import abc from "../assets/abc.jpg";
 import PercentageProgress from "./Progress";
 
-
-
-export const HomeBody = () => {
- 
-
-//   if (num > 70) {
-//     circleColor = "success";
-//   } else if (num > 50) {
-//     circleColor = "warning";
-//   } else if (num > 30) {
-//     circleColor = "danger";
-//   }
-
+const HomeBody = () => {
   return (
     <>
       <Box sx={{ mx: "10%", my: "10px" }}>
@@ -36,126 +24,129 @@ export const HomeBody = () => {
         </Typography>
       </Box>
 
-      <Container sx={{ mx: "10%", mb: "40px" }}>
-        <Grid container sx={{ overflow: "auto" }}>
-          <Stack direction="row" spacing={2}>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <PercentageProgress/>
+      <Container maxWidth="xl" sx={{  mb: 6 }}>
+        <Box sx={{ overflow: "auto", width: "80%",mx:15 }}>
+          <Grid container>
+            <Stack direction="row" spacing={2}>
+              <Card sx={{ minWidth: 200 }}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="auto"
+                  image={abc}
+                />
+                <PercentageProgress />
 
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-          </Stack>
-        </Grid>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Plane
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    2023-01-12
+                  </Typography>
+                </CardContent>
+              </Card>
+              <Card sx={{ minWidth: 200 }}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="auto"
+                  image={abc}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Plane
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    2023-01-12
+                  </Typography>
+                </CardContent>
+              </Card>
+              <Card sx={{ minWidth: 200 }}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="auto"
+                  image={abc}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Plane
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    2023-01-12
+                  </Typography>
+                </CardContent>
+              </Card>
+              <Card sx={{ minWidth: 200 }}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="auto"
+                  image={abc}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Plane
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    2023-01-12
+                  </Typography>
+                </CardContent>
+              </Card>
+              <Card sx={{ minWidth: 200 }}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="auto"
+                  image={abc}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Plane
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    2023-01-12
+                  </Typography>
+                </CardContent>
+              </Card>
+              <Card sx={{ minWidth: 200 }}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="auto"
+                  image={abc}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Plane
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    2023-01-12
+                  </Typography>
+                </CardContent>
+              </Card>
+              <Card sx={{ minWidth: 200 }}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="auto"
+                  image={abc}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Plane
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    2023-01-12
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Stack>
+          </Grid>
+        </Box>
       </Container>
     </>
   );
 };
+export default HomeBody;

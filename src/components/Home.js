@@ -1,7 +1,7 @@
 import React from "react";
 import home from "../assets/home.jfif";
 import { Typography, Box } from "@mui/material";
-export const Home = () => {
+const Home = () => {
   const backGround = {
     backgroundImage: `url(${home})`,
     backgroundRepeat: "no-repeat",
@@ -41,3 +41,4 @@ export const Home = () => {
     </Box>
   );
 };
+export default Home
