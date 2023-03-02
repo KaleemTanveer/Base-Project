@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import SimpleAccordion from "./Accordion";
+import { useDispatch } from "react-redux";
+
 import {
   Box,
   Typography,
@@ -11,158 +14,66 @@ import {
 } from "@mui/material";
 import PercentageProgress from "./Progress";
 import abc from "../assets/abc.jpg";
+import { useSelector } from "react-redux";
 const MovieCard = () => {
+  const dispatch = useDispatch();
+  const popularMovies = useSelector((state) => state.popularMovies.list);
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = () => {
+    dispatch({
+      type: "SHOW_LIST",
+    });
+  };
   return (
     <>
-      <CssBaseline />
       <Box sx={{ mx: "10%", my: "10px" }}>
         <Typography variant="h4" sx={{ mx: "20px", fontWeight: "Bold" }}>
           Popular Movies
         </Typography>
       </Box>
+      {/* <Grid>
+        <SimpleAccordion />
+      </Grid> */}
+
+
+
+
+
+
+
+
+
+
+
+
       <Box sx={{ mx: "20%" }}>
-        <Grid xs={12} container spacing={2}>
+        <Grid container spacing={3}>
           {/* <Stack direction="row"> */}
-          <Grid item lg={3} md={4}>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <PercentageProgress />
+          {popularMovies.map((movies) => (
+            <Grid key={movies.id} item lg={3} md={4} sm={6} xs={12} >
+              <Card sx={{ mixWidth: 50, minWidth: 150, maxHight: 550 }}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="auto"
+                  image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
+                />
+                <PercentageProgress key={movies.id} vote={movies.vote_average*10}/>
 
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item lg={3} md={4}>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <PercentageProgress />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {movies.original_title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {movies.release_date}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
 
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item lg={3} md={4}>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <PercentageProgress />
-
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item lg={3} md={4}>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <PercentageProgress />
-
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item lg={3} md={4}>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <PercentageProgress />
-
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item lg={3} md={4}>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <PercentageProgress />
-
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item lg={3} md={4}>
-            <Card sx={{ minWidth: 200 }}>
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="240"
-                image={abc}
-              />
-              <PercentageProgress />
-
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Plane
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023-01-12
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
           {/* </Stack> */}
         </Grid>
       </Box>

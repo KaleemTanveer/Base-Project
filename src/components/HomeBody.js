@@ -19,8 +19,8 @@ const HomeBody = () => {
   return (
     <>
       <Box sx={{ mx: "10%", my: "10px" }}>
-        <Typography variant="h4" sx={{ p: "10px" }}>
-          Trending.
+        <Typography variant="h4" sx={{ p: "10px", fontWeight:"bold" }}>
+          Trending Movies.
         </Typography>
       </Box>
 

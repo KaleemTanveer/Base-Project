@@ -12,15 +12,26 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../assets/logo.png";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const pages = ["Movies", "TV Shows", "People", "More"];
-const movies = ["Popular", "Now Playing", "Upcomming", "Top Rated"];
-const tvShows = ["Popular", "Airing Today", "On TV", "Top Rated"];
-const people = ["Popular People"];
-const more = ["Discussions", "Leaderboard", "Support", "API"];
+const movies = [
+  { id: "1", link: "popular", movie: "Popular" },
+  { id: "2", link: "nowplaying", movie: "Now Playing" },
+  { id: "3", link: "upcomming", movie: "Upcomming" },
+  { id: "4", link: "toprated", movie: "Top Rated" },
+];
+const tvShows = [
+  { id: "1", link: "popular", tvShow: "Popular" },
+  { id: "2", link: "airingtoday", tvShow: "Airing Today" },
+  { id: "3", link: "ontv", tvShow: "On TV" },
+  { id: "4", link: "toprated", tvShow: "Top Rated" },
+];
+const people = [{ id: "1", link: "popularpeople", people: "Popular People" }];
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElUser1, setAnchorElUser1] = React.useState(null);
@@ -45,7 +56,10 @@ const NavBar = () => {
     setAnchorElNav(null);
   };
   const handleCloseUserMenu = (event) => {
-    console.log(`/${event.currentTarget.innerText}`);
+    // dispatch({
+    //   type: "SHOW_LIST",
+    // });
+    // console.log(`/${event.currentTarget.innerText}`);
     setAnchorElUser(null);
   };
   const handleCloseUserMenu1 = (event) => {
@@ -63,8 +77,8 @@ const NavBar = () => {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -159,16 +173,15 @@ const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {movies.map((movie) => (
-                <MenuItem key={movie} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">
-                    <NavLink
-                      style={{ color: "black", textDecoration: "none" }}
-                      to={`/${movie}`}
-                    >
-                      {movie}
-                    </NavLink>
-                  </Typography>
-                </MenuItem>
+                <NavLink
+                  key={movie.id}
+                  style={{ color: "black", textDecoration: "none" }}
+                  to={`/${movie.link}`}
+                >
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{movie.movie}</Typography>
+                  </MenuItem>
+                </NavLink>
               ))}
             </Menu>
 
@@ -197,9 +210,15 @@ const NavBar = () => {
               onClose={handleCloseUserMenu1}
             >
               {tvShows.map((tvShow) => (
-                <MenuItem key={tvShow} onClick={handleCloseUserMenu1}>
-                  <Typography textAlign="center">{tvShow}</Typography>
-                </MenuItem>
+                <NavLink
+                  key={tvShow.id}
+                  to={`/${tvShow.link}`}
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  <MenuItem onClick={handleCloseUserMenu1}>
+                    <Typography textAlign="center">{tvShow.tvShow}</Typography>
+                  </MenuItem>
+                </NavLink>
               ))}
             </Menu>
 
@@ -228,9 +247,15 @@ const NavBar = () => {
               onClose={handleCloseUserMenu2}
             >
               {people.map((people) => (
-                <MenuItem key={people} onClick={handleCloseUserMenu2}>
-                  <Typography textAlign="center">{people}</Typography>
-                </MenuItem>
+                <NavLink
+                  key={people.id}
+                  to={`/${people.link}`}
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  <MenuItem onClick={handleCloseUserMenu2}>
+                    <Typography textAlign="center">{people.people}</Typography>
+                  </MenuItem>
+                </NavLink>
               ))}
             </Menu>
           </Box>
