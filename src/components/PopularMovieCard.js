@@ -15,15 +15,15 @@ import {
 import PercentageProgress from "./Progress";
 import abc from "../assets/abc.jpg";
 import { useSelector } from "react-redux";
-const MovieCard = () => {
+const PopularMovieCard = () => {
   const dispatch = useDispatch();
-  const popularMovies = useSelector((state) => state.popularMovies.list);
+  const popularMovies = useSelector((state) => state.Movies.popularMovie);
   useEffect(() => {
     getData();
   }, []);
   const getData = () => {
     dispatch({
-      type: "SHOW_LIST",
+      type: "POPULAR_MOVIE",
     });
   };
   return (
@@ -51,7 +51,7 @@ const MovieCard = () => {
       <Box sx={{ mx: "20%" }}>
         <Grid container spacing={3}>
           {/* <Stack direction="row"> */}
-          {popularMovies.map((movies) => (
+          {popularMovies?.map((movies) => (
             <Grid key={movies.id} item lg={3} md={4} sm={6} xs={12} >
               <Card sx={{ mixWidth: 50, minWidth: 150, maxHight: 550 }}>
                 <CardMedia
@@ -63,7 +63,7 @@ const MovieCard = () => {
                 <PercentageProgress key={movies.id} vote={movies.vote_average*10}/>
 
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="subtitle" component="div">
                     {movies.original_title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -81,4 +81,4 @@ const MovieCard = () => {
   );
 };
 
-export default MovieCard;
+export default PopularMovieCard;

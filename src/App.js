@@ -2,11 +2,13 @@ import "./App.css";
 import React from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
-import PopularMovies from "./pages/PopularMovies";
+import PopularMovie from "./pages/PopularMovie";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
-import HomeBody from "./components/HomeBody";
 import { CssBaseline } from "@mui/material";
+import NowPlayingMovie from "./pages/NowPlayingMovie";
+import UpComingMovie from "./pages/UpComingMovie";
+import TopRatedMovie from "./pages/TopRatedMovie";
 function App() {
   return (
     <>
@@ -14,11 +16,11 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Outlet />}>
-          <Route index element={<HomeBody />}/>
-          <Route path="/popular" element={<PopularMovies/>}/>
-          <Route path="/nowplaying" element={<div>nowPlay</div>}/>
-          <Route path="/upcomming" element={<div>upcomming</div>}/>
-          <Route path="/toprated" element={<div>toprated</div>}/>
+          <Route index element={<Dashboard/>}/>
+          <Route path="/popular" element={<PopularMovie/>}/>
+          <Route path="/nowplaying" element={<NowPlayingMovie/>}/>
+          <Route path="/upcomming" element={<UpComingMovie/>}/>
+          <Route path="/toprated" element={<TopRatedMovie/>}/>
         </Route>
        
       </Routes>

@@ -1,13 +1,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import createSagaMiddleware from "@redux-saga/core";
-// import popularMovies from "./reducer/popularMovies";
 import saga from "./saga/popularMoviesSaga";
-import popularMovies from "./reducer/popularMovies";
+import Movies from "./Movies";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducer = combineReducers({
-  popularMovies,
+  Movies,
 });
 
 const store = configureStore({
