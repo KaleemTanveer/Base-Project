@@ -56,10 +56,7 @@ const NavBar = () => {
     setAnchorElNav(null);
   };
   const handleCloseUserMenu = (event) => {
-    // dispatch({
-    //   type: "SHOW_LIST",
-    // });
-    // console.log(`/${event.currentTarget.innerText}`);
+    
     setAnchorElUser(null);
   };
   const handleCloseUserMenu1 = (event) => {

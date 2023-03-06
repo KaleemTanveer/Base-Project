@@ -9,6 +9,8 @@ import { CssBaseline } from "@mui/material";
 import NowPlayingMovie from "./pages/NowPlayingMovie";
 import UpComingMovie from "./pages/UpComingMovie";
 import TopRatedMovie from "./pages/TopRatedMovie";
+import PopularPeople from "./pages/PopularPeople";
+import PopularMovieDetailPage from "./pages/PopularMovieDetailPage";
 function App() {
   return (
     <>
@@ -18,9 +20,11 @@ function App() {
         <Route path="/" element={<Outlet />}>
           <Route index element={<Dashboard/>}/>
           <Route path="/popular" element={<PopularMovie/>}/>
+          <Route path="/popular/:id" element={<PopularMovieDetailPage/>}/>
           <Route path="/nowplaying" element={<NowPlayingMovie/>}/>
           <Route path="/upcomming" element={<UpComingMovie/>}/>
           <Route path="/toprated" element={<TopRatedMovie/>}/>
+          <Route path="/popularpeople"element={<PopularPeople/>}/>
         </Route>
        
       </Routes>

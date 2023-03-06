@@ -1,12 +1,15 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import createSagaMiddleware from "@redux-saga/core";
-import saga from "./saga/popularMoviesSaga";
-import Movies from "./Movies";
+import movie from "./saga/popularMoviesSaga";
+import Movies from "./reducer/Movies";
+import People from "./reducer/People";
+import people from "./saga/PopularPeopleSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducer = combineReducers({
   Movies,
+  People,
 });
 
 const store = configureStore({
@@ -15,6 +18,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
 });
-sagaMiddleware.run(saga);
+sagaMiddleware.run(movie);
+sagaMiddleware.run(people);
 
 export default store;

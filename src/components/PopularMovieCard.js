@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import SimpleAccordion from "./Accordion";
 import { useDispatch } from "react-redux";
-
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -11,13 +12,23 @@ import {
   CardMedia,
   CardContent,
   Stack,
+  Container,
+  Accordion,
+  AccordionSummary,
+  Divider,
+  AccordionDetails,
 } from "@mui/material";
 import PercentageProgress from "./Progress";
 import abc from "../assets/abc.jpg";
 import { useSelector } from "react-redux";
 const PopularMovieCard = () => {
+  const navigate=useNavigate()
   const dispatch = useDispatch();
   const popularMovies = useSelector((state) => state.Movies.popularMovie);
+
+  const getId = (id) => {
+    navigate(`/popular/${id}`)
+  };
   useEffect(() => {
     getData();
   }, []);
@@ -28,55 +39,112 @@ const PopularMovieCard = () => {
   };
   return (
     <>
-      <Box sx={{ mx: "10%", my: "10px" }}>
-        <Typography variant="h4" sx={{ mx: "20px", fontWeight: "Bold" }}>
-          Popular Movies
-        </Typography>
-      </Box>
-      {/* <Grid>
-        <SimpleAccordion />
-      </Grid> */}
-
-
-
-
-
-
-
-
-
-
-
-
-      <Box sx={{ mx: "20%" }}>
+      <Container>
         <Grid container spacing={3}>
-          {/* <Stack direction="row"> */}
-          {popularMovies?.map((movies) => (
-            <Grid key={movies.id} item lg={3} md={4} sm={6} xs={12} >
-              <Card sx={{ mixWidth: 50, minWidth: 150, maxHight: 550 }}>
-                <CardMedia
-                  component="img"
-                  alt="green iguana"
-                  height="auto"
-                  image={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
-                />
-                <PercentageProgress key={movies.id} vote={movies.vote_average*10}/>
-
-                <CardContent>
-                  <Typography gutterBottom variant="subtitle" component="div">
-                    {movies.original_title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {movies.release_date}
-                  </Typography>
-                </CardContent>
-              </Card>
+          <Grid item xs={12} sm={12} md={12} lg={3}>
+            <Typography sx={{ mt: 4, fontWeight: "bold" }} variant="h5">
+              Popular Movies
+            </Typography>
+            <Accordion sx={{ my: 2 }}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>Sort</Typography>
+              </AccordionSummary>
+              <Divider />
+              <AccordionDetails>
+                <Typography variant="h7">Sort Result By</Typography>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>Filters</Typography>
+              </AccordionSummary>
+              <Divider />
+              <AccordionDetails>
+                <Typography>Show Me</Typography>
+              </AccordionDetails>
+              <Divider />
+              <AccordionDetails>
+                <Typography>Availabilities</Typography>
+              </AccordionDetails>
+              <Divider />
+              <AccordionDetails>
+                <Typography>Release Dates</Typography>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion sx={{ my: 2 }}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>Where To Watch</Typography>
+              </AccordionSummary>
+              <Divider />
+              <AccordionDetails>
+                <Typography variant="h7">My Services</Typography>
+              </AccordionDetails>
+              <Divider />
+              <AccordionDetails>
+                <Typography variant="h7">Country</Typography>
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+          <Grid item marginTop={4} xs={12} sm={12} md={12} lg={9}>
+            <Grid container align="center" spacing={2}>
+              {popularMovies?.map((movie) => {
+                return (
+                  <Grid
+                    key={movie.id}
+                    item
+                    lg={2.2}
+                    sm={4}
+                    xs={12}
+                    md={3}
+                    onClick={() => {
+                      getId(movie.id);
+                    }}
+                  >
+                    <Card
+                      sx={{ minWidth: 155, maxWidth: 230, maxHeight: 550 }}
+                      align="start"
+                    >
+                      <CardMedia
+                        component="img"
+                        image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                      />
+                      <PercentageProgress
+                        key={movie.id}
+                        vote={movie.vote_average * 10}
+                      />
+                      <CardContent>
+                        <Typography
+                          gutterBottom
+                          fontWeight="bold"
+                          variant="h7"
+                          component="div"
+                        >
+                          {movie.title}
+                        </Typography>
+                        <Typography variant="h7" color="text.secondary">
+                          {movie.release_date}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                );
+              })}
             </Grid>
-          ))}
-
-          {/* </Stack> */}
+          </Grid>
         </Grid>
-      </Box>
+      </Container>
     </>
   );
 };

@@ -5,7 +5,7 @@ function* popularMovie() {
   let data = yield axios.get(
     "https://api.themoviedb.org/3/movie/popular?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=1"
   );
-//   console.log(data.data);
+  //   console.log(data.data);
   yield put({
     type: "SAGA_POPULAR_MOVIE",
     payload: {
@@ -17,7 +17,7 @@ function* nowPlayingMovie() {
   let data = yield axios.get(
     "https://api.themoviedb.org/3/movie/now_playing?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=1"
   );
-//   console.log(data.data);
+  //   console.log(data.data);
   yield put({
     type: "SAGA_NOW_PLAYING",
     payload: {
@@ -29,7 +29,7 @@ function* upComingMovie() {
   let data = yield axios.get(
     "https://api.themoviedb.org/3/movie/upcoming?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=1"
   );
-//   console.log(data.data);
+  //   console.log(data.data);
   yield put({
     type: "SAGA_UP_COMING_MOVIE",
     payload: {
@@ -41,7 +41,7 @@ function* topRatedMovie() {
   let data = yield axios.get(
     "https://api.themoviedb.org/3/movie/top_rated?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=1"
   );
-//   console.log(data.data);
+  //   console.log(data.data);
   yield put({
     type: "SAGA_TOP_RATED_MOVIE",
     payload: {
@@ -50,10 +50,25 @@ function* topRatedMovie() {
   });
 }
 
-function* saga() {
+function* popularMovieDetail(id) {
+  console.log(id.movieId);
+    let data = yield axios.get(
+      `https://api.themoviedb.org/3/movie/${id.movieId}?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US`
+    );
+    console.log(data);
+    yield put({
+      type: "SAGA_POPULAR_PEOPLE_DETAIL",
+      payload: {
+        data: data.data
+      },
+    });
+}
+
+function* movie() {
   yield takeEvery("POPULAR_MOVIE", popularMovie);
   yield takeEvery("NOW_PLAYING", nowPlayingMovie);
   yield takeEvery("UP_COMING_MOVIE", upComingMovie);
   yield takeEvery("TOP_RATED_MOVIE", topRatedMovie);
+  yield takeEvery("POPULAR_PEOPLE_DETAIL", popularMovieDetail);
 }
-export default saga;
+export default movie;

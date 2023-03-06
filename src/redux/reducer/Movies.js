@@ -4,6 +4,7 @@ const initialState = {
   nowPlayingMovie: [],
   upComingMovie: [],
   topRatedMovie: [],
+  popularMovieDetail: [],
 };
 const Movies = (state = initialState, action) => {
   switch (action.type) {
@@ -25,6 +26,11 @@ const Movies = (state = initialState, action) => {
     case "SAGA_TOP_RATED_MOVIE":
       return {
         topRatedMovie: [...action.payload.data.results],
+      };
+    case "SAGA_POPULAR_PEOPLE_DETAIL":
+      // console.log(action.data.data);
+      return {
+        popularMovieDetail: action.payload.data,
       };
 
     default:
