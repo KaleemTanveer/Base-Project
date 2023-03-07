@@ -1,15 +1,17 @@
 import { put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
-function* popularMovie() {
+function* popularMovie(props) {
+  console.log(props.page);
   let data = yield axios.get(
-    "https://api.themoviedb.org/3/movie/popular?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/popular?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=${props.page}`
   );
   //   console.log(data.data);
   yield put({
     type: "SAGA_POPULAR_MOVIE",
     payload: {
       data: data.data,
+      page: props.page,
     },
   });
 }
@@ -51,17 +53,16 @@ function* topRatedMovie() {
 }
 
 function* popularMovieDetail(id) {
-  console.log(id.movieId);
-    let data = yield axios.get(
-      `https://api.themoviedb.org/3/movie/${id.movieId}?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US`
-    );
-    console.log(data);
-    yield put({
-      type: "SAGA_POPULAR_PEOPLE_DETAIL",
-      payload: {
-        data: data.data
-      },
-    });
+  let data = yield axios.get(
+    `https://api.themoviedb.org/3/movie/${id.movieId}?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US`
+  );
+
+  yield put({
+    type: "SAGA_POPULAR_MOVIE_DETAIL",
+    payload: {
+      data: data.data,
+    },
+  });
 }
 
 function* movie() {
@@ -69,6 +70,6 @@ function* movie() {
   yield takeEvery("NOW_PLAYING", nowPlayingMovie);
   yield takeEvery("UP_COMING_MOVIE", upComingMovie);
   yield takeEvery("TOP_RATED_MOVIE", topRatedMovie);
-  yield takeEvery("POPULAR_PEOPLE_DETAIL", popularMovieDetail);
+  yield takeEvery("POPULAR_MOVIE_DETAIL", popularMovieDetail);
 }
 export default movie;

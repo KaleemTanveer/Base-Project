@@ -21,20 +21,23 @@ import {
 import PercentageProgress from "./Progress";
 import abc from "../assets/abc.jpg";
 import { useSelector } from "react-redux";
+import LoadMoreButton from "./LoadMoreButton";
 const PopularMovieCard = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const popularMovies = useSelector((state) => state.Movies.popularMovie);
 
   const getId = (id) => {
-    navigate(`/popular/${id}`)
+    navigate(`/popular/${id}`);
   };
   useEffect(() => {
     getData();
   }, []);
+  let count = 1;
   const getData = () => {
     dispatch({
       type: "POPULAR_MOVIE",
+      page: count,
     });
   };
   return (
@@ -99,10 +102,10 @@ const PopularMovieCard = () => {
           </Grid>
           <Grid item marginTop={4} xs={12} sm={12} md={12} lg={9}>
             <Grid container align="center" spacing={2}>
-              {popularMovies?.map((movie) => {
+              {popularMovies?.map((movie,i) => {
                 return (
                   <Grid
-                    key={movie.id}
+                    key={i}
                     item
                     lg={2.2}
                     sm={4}
@@ -141,6 +144,7 @@ const PopularMovieCard = () => {
                   </Grid>
                 );
               })}
+      <LoadMoreButton count={count} />
             </Grid>
           </Grid>
         </Grid>

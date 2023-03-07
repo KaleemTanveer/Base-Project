@@ -64,6 +64,7 @@ const PopularPeopleCard = () => {
           })}
         </Grid>
       </Container>
+      
     </>
   );
 };
