@@ -8,7 +8,7 @@ const LoadMoreButton = (props) => {
   const apiCall = () => {
       ++count;
     dispatch({
-      type: "POPULAR_MOVIE",
+      type: props.type,
       page: count,
     });
   };

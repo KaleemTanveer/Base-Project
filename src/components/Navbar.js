@@ -22,16 +22,11 @@ const movies = [
   { id: "3", link: "upcomming", movie: "Upcomming" },
   { id: "4", link: "toprated", movie: "Top Rated" },
 ];
-const tvShows = [
-  { id: "1", link: "popular", tvShow: "Popular" },
-  { id: "2", link: "airingtoday", tvShow: "Airing Today" },
-  { id: "3", link: "ontv", tvShow: "On TV" },
-  { id: "4", link: "toprated", tvShow: "Top Rated" },
-];
+const tvShows = [{ id: "1", link: "populartvshow", tvShow: "Popular" }];
 const people = [{ id: "1", link: "popularpeople", people: "Popular People" }];
 
 const NavBar = () => {
-  const dispatch = useDispatch();
+  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElUser1, setAnchorElUser1] = React.useState(null);
@@ -56,7 +51,6 @@ const NavBar = () => {
     setAnchorElNav(null);
   };
   const handleCloseUserMenu = (event) => {
-    
     setAnchorElUser(null);
   };
   const handleCloseUserMenu1 = (event) => {

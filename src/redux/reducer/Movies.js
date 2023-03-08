@@ -5,39 +5,67 @@ const initialState = {
   upComingMovie: [],
   topRatedMovie: [],
   popularMovieDetail: [],
+  trendingMovie: [],
 };
 const Movies = (state = initialState, action) => {
   switch (action.type) {
     case "SAGA_POPULAR_MOVIE":
-      if(action.payload.page===1){
-        console.log("page1");
-      return {
-        popularMovie: [...action.payload.data.results],
-      };}
-      else{
+      if (action.payload.page === 1) {
+        
         return {
-          popularMovie: [...state.popularMovie,...action.payload.data.results],
+          popularMovie: [...action.payload.data.results],
+        };
+      } else {
+        return {
+          popularMovie: [...state.popularMovie, ...action.payload.data.results],
         };
       }
 
     case "SAGA_NOW_PLAYING":
-      return {
-        nowPlayingMovie: [...action.payload.data.results],
-      };
+      
+      if (action.payload.page === 1) {
+        
+        return {
+          nowPlayingMovie: [...action.payload.data.results],
+        };
+      } else {
+        return {
+          nowPlayingMovie: [...state.nowPlayingMovie, ...action.payload.data.results],
+        };
+      }
 
     case "SAGA_UP_COMING_MOVIE":
-      return {
-        upComingMovie: [...action.payload.data.results],
-      };
+      if (action.payload.page === 1) {
+        
+        return {
+          upComingMovie: [...action.payload.data.results],
+        };
+      } else {
+        return {
+          upComingMovie: [...state.upComingMovie, ...action.payload.data.results],
+        };
+      }
 
     case "SAGA_TOP_RATED_MOVIE":
-      return {
-        topRatedMovie: [...action.payload.data.results],
-      };
+      if (action.payload.page === 1) {
+        
+        return {
+          topRatedMovie: [...action.payload.data.results],
+        };
+      } else {
+        return {
+          topRatedMovie: [...state.topRatedMovie, ...action.payload.data.results],
+        };
+      }
     case "SAGA_POPULAR_MOVIE_DETAIL":
       // console.log(action.data.data);
       return {
         popularMovieDetail: action.payload.data,
+      };
+    case "SAGA_TRENDING_MOVIE":
+      // console.log(action.data.data);
+      return {
+        trendingMovie: [...action.payload.data.results],
       };
 
     default:

@@ -11,6 +11,7 @@ import UpComingMovie from "./pages/UpComingMovie";
 import TopRatedMovie from "./pages/TopRatedMovie";
 import PopularPeople from "./pages/PopularPeople";
 import PopularMovieDetailPage from "./pages/PopularMovieDetailPage";
+import PopularTvShowCard from "./components/PopularTvShowCard";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
           <Route path="/nowplaying" element={<NowPlayingMovie/>}/>
           <Route path="/upcomming" element={<UpComingMovie/>}/>
           <Route path="/toprated" element={<TopRatedMovie/>}/>
+          <Route path="/populartvshow" element={<PopularTvShowCard/>}/>
           <Route path="/popularpeople"element={<PopularPeople/>}/>
         </Route>
        

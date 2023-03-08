@@ -15,39 +15,42 @@ function* popularMovie(props) {
     },
   });
 }
-function* nowPlayingMovie() {
+function* nowPlayingMovie(props) {
   let data = yield axios.get(
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=${props.page}`
   );
-  //   console.log(data.data);
+    // console.log(data.data);
   yield put({
     type: "SAGA_NOW_PLAYING",
     payload: {
       data: data.data,
+      page: props.page,
     },
   });
 }
-function* upComingMovie() {
+function* upComingMovie(props) {
   let data = yield axios.get(
-    "https://api.themoviedb.org/3/movie/upcoming?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=${props.page}`
   );
   //   console.log(data.data);
   yield put({
     type: "SAGA_UP_COMING_MOVIE",
     payload: {
       data: data.data,
+      page: props.page,
     },
   });
 }
-function* topRatedMovie() {
+function* topRatedMovie(props) {
   let data = yield axios.get(
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=${props.page}`
   );
   //   console.log(data.data);
   yield put({
     type: "SAGA_TOP_RATED_MOVIE",
     payload: {
       data: data.data,
+      page: props.page,
     },
   });
 }
@@ -64,6 +67,18 @@ function* popularMovieDetail(id) {
     },
   });
 }
+function* trendingMovie() {
+  let data = yield axios.get(
+    "https://api.themoviedb.org/3/trending/all/day?api_key=fd51a367f88926fa40d83760311ca74a"
+  );
+    // console.log(data.data);
+  yield put({
+    type: "SAGA_TRENDING_MOVIE",
+    payload: {
+      data: data.data,
+    },
+  });
+}
 
 function* movie() {
   yield takeEvery("POPULAR_MOVIE", popularMovie);
@@ -71,5 +86,6 @@ function* movie() {
   yield takeEvery("UP_COMING_MOVIE", upComingMovie);
   yield takeEvery("TOP_RATED_MOVIE", topRatedMovie);
   yield takeEvery("POPULAR_MOVIE_DETAIL", popularMovieDetail);
+  yield takeEvery("TRENDING_MOVIE", trendingMovie);
 }
 export default movie;

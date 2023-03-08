@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import SimpleAccordion from "./Accordion";
 import { useDispatch } from "react-redux";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useNavigate } from "react-router-dom";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LoadMoreButton from "./LoadMoreButton";
 import {
-  Box,
   Typography,
   CssBaseline,
   Grid,
@@ -21,26 +21,22 @@ import {
 import PercentageProgress from "./Progress";
 import abc from "../assets/abc.jpg";
 import { useSelector } from "react-redux";
-import LoadMoreButton from "./LoadMoreButton";
-const PopularMovieCard = () => {
-  const navigate = useNavigate();
+const PopularTvShowCard = () => {
   const dispatch = useDispatch();
-  const popularMovies = useSelector((state) => state.Movies.popularMovie);
+  const popularTvShow = useSelector((state) => state.TvShow.popularTvShow);
+  const navigate = useNavigate();
 
   const getId = (id) => {
     navigate(`/popular/${id}`);
   };
-  useEffect(() => {
-    getData();
-  }, []);
   let count = 1;
-  const getData = () => {
+  useEffect(() => {
     dispatch({
-      type: "POPULAR_MOVIE",
+      type: "POPULAR_TV_SHOW",
       page: count,
     });
-  };
-  let type="POPULAR_MOVIE"
+  }, []);
+  let type = "POPULAR_TV_SHOW";
   return (
     <>
       <Container>
@@ -103,7 +99,7 @@ const PopularMovieCard = () => {
           </Grid>
           <Grid item marginTop={4} xs={12} sm={12} md={12} lg={9}>
             <Grid container align="center" spacing={2}>
-              {popularMovies?.map((movie,i) => {
+              {popularTvShow?.map((movie, i) => {
                 return (
                   <Grid
                     key={i}
@@ -135,17 +131,17 @@ const PopularMovieCard = () => {
                           variant="h7"
                           component="div"
                         >
-                          {movie.title}
+                          {movie.name}
                         </Typography>
                         <Typography variant="h7" color="text.secondary">
-                          {movie.release_date}
+                          {movie.first_air_date}
                         </Typography>
                       </CardContent>
                     </Card>
                   </Grid>
                 );
               })}
-      <LoadMoreButton type={type} />
+              <LoadMoreButton type={type} />
             </Grid>
           </Grid>
         </Grid>
@@ -154,4 +150,4 @@ const PopularMovieCard = () => {
   );
 };
 
-export default PopularMovieCard;
+export default PopularTvShowCard;
