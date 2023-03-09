@@ -16,7 +16,7 @@ const PopularPeopleCard = () => {
   const popularPeople = useSelector((state) => state.People.popularPeople);
 
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     getData();
   }, []);
@@ -34,13 +34,16 @@ const PopularPeopleCard = () => {
 
         <Grid container spacing={3} sx={{ px: "auto" }}>
           {popularPeople?.map((people) => {
-            {
-              /* console.log(people); */
-            }
-
             return (
-              <Grid item key={people.id}  >
-                <Card  sx={{ minWidth: 235, borderRadius: 0,align:"start",width:235 }}>
+              <Grid item key={people.id}>
+                <Card
+                  sx={{
+                    minWidth: 235,
+                    borderRadius: 0,
+                    align: "start",
+                    width: 235,
+                  }}
+                >
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -64,7 +67,6 @@ const PopularPeopleCard = () => {
           })}
         </Grid>
       </Container>
-      
     </>
   );
 };

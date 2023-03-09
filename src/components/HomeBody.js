@@ -11,14 +11,22 @@ import {
   Stack,
   CircularProgress,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import abc from "../assets/abc.jpg";
 import PercentageProgress from "./Progress";
 
 const HomeBody = () => {
+  const navigate = useNavigate();
   const trendingMovie = useSelector((state) => state.Movies.trendingMovie);
-
+  const getId = (id, type) => {
+    if (type == "movie") {
+      navigate(`/popular/${id}`);
+    } else {
+      navigate(`/populartvshow/${id}`);
+    }
+  };
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
@@ -38,9 +46,14 @@ const HomeBody = () => {
           <Grid container>
             <Stack direction="row" spacing={2}>
               {trendingMovie?.map((trend) => {
-                
                 return (
-                  <Card key={trend.id} sx={{ minWidth: 200 }}>
+                  <Card
+                    key={trend.id}
+                    sx={{ minWidth: 200, cursor: "pointer" }}
+                    onClick={() => {
+                      getId(trend.id, trend.media_type);
+                    }}
+                  >
                     <CardMedia
                       component="img"
                       alt="green iguana"
@@ -53,11 +66,19 @@ const HomeBody = () => {
                     />
 
                     <CardContent>
-                      <Typography gutterBottom variant="subtitle" component="div" fontWeight={"bold"}>
+                      <Typography
+                        gutterBottom
+                        variant="subtitle"
+                        component="div"
+                        fontWeight={"bold"}
+                      >
                         {trend.original_title || trend.name}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                     { trend.release_date||trend.first_air_date}
+                        {trend.release_date || trend.first_air_date}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {trend.media_type}
                       </Typography>
                     </CardContent>
                   </Card>

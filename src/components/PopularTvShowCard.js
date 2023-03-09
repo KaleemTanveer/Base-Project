@@ -27,7 +27,7 @@ const PopularTvShowCard = () => {
   const navigate = useNavigate();
 
   const getId = (id) => {
-    navigate(`/popular/${id}`);
+    navigate(`/populartvshow/${id}`);
   };
   let count = 1;
   useEffect(() => {
@@ -43,7 +43,7 @@ const PopularTvShowCard = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={12} md={12} lg={3}>
             <Typography sx={{ mt: 4, fontWeight: "bold" }} variant="h5">
-              Popular Movies
+            Popular Tv Show
             </Typography>
             <Accordion sx={{ my: 2 }}>
               <AccordionSummary
@@ -113,7 +113,7 @@ const PopularTvShowCard = () => {
                     }}
                   >
                     <Card
-                      sx={{ minWidth: 155, maxWidth: 230, maxHeight: 550 }}
+                      sx={{ minWidth: 155, maxWidth: 230, maxHeight: 550,cursor:"pointer" }}
                       align="start"
                     >
                       <CardMedia

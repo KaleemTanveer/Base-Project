@@ -49,6 +49,7 @@ const Home = () => {
         variant="h3"
         sx={{
           pt: 6,
+          pl:2,
           color: "white",
         }}
       >
@@ -58,6 +59,8 @@ const Home = () => {
         variant="h4"
         sx={{
           color: "white",
+          pt:2,
+          pl:2
           
         }}
       >

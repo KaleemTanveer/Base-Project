@@ -59,7 +59,7 @@ function* popularMovieDetail(id) {
   let data = yield axios.get(
     `https://api.themoviedb.org/3/movie/${id.movieId}?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US`
   );
-
+console.log(data);
   yield put({
     type: "SAGA_POPULAR_MOVIE_DETAIL",
     payload: {

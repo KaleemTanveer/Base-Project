@@ -53,7 +53,7 @@ const NowPlayingMovieCard = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={12} md={12} lg={3}>
             <Typography sx={{ mt: 4, fontWeight: "bold" }} variant="h5">
-              Popular Movies
+            NowPlaying Movie
             </Typography>
             <Accordion sx={{ my: 2 }}>
               <AccordionSummary
@@ -123,7 +123,7 @@ const NowPlayingMovieCard = () => {
                     }}
                   >
                     <Card
-                      sx={{ minWidth: 155, maxWidth: 230, maxHeight: 550 }}
+                      sx={{ minWidth: 155, maxWidth: 230, maxHeight: 550,cursor:"pointer" }}
                       align="start"
                     >
                       <CardMedia

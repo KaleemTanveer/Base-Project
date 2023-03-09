@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
-import CircularProgress from '@mui/material/CircularProgress';
 import {
   Box,
   Typography,
@@ -14,18 +13,18 @@ import {
   Grid,
   Avatar,
 } from "@mui/material";
-import PercentageProgress from "./Progress";
-const PopularMovieDetail = () => {
+
+const TvShowDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const popularMovieDetail = useSelector(
-    (state) => state.Movies.popularMovieDetail
+    (state) => state.TvShow.popularTvShowDetail
   );
   console.log(popularMovieDetail);
-  let newDate = new Date(popularMovieDetail?.release_date);
+  let newDate = new Date(popularMovieDetail?.last_air_date);
   useEffect(() => {
     dispatch({
-      type: "POPULAR_MOVIE_DETAIL",
+      type: "POPULAR_TV_SHOW_MOVIE_DETAIL",
       movieId: id,
     });
   }, []);
@@ -55,9 +54,8 @@ const PopularMovieDetail = () => {
     return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
   }
   return (
-
     <>
-      {popularMovieDetail? (<Box
+      <Box
         sx={{
           ...backGround,
           bgcolor: "text.primary",
@@ -83,13 +81,13 @@ const PopularMovieDetail = () => {
               <Box sx={{ verticalAlign: "middle" }}>
                 <Box pt={5}>
                   <Typography variant="h5" color={"wheat"}>
-                    {popularMovieDetail?.original_title} (
+                    {popularMovieDetail?.original_name} (
                     {newDate.getFullYear()}){" "}
                   </Typography>
                 </Box>
                 <Box>
                   <Typography variant="subtitle" color={"white"}>
-                    {popularMovieDetail?.release_date} (US)
+                    {popularMovieDetail?.last_air_date} (US)
                   </Typography>
                   {popularMovieDetail?.genres?.map((genre) => {
                     return (
@@ -142,13 +140,9 @@ const PopularMovieDetail = () => {
             </Grid>
           </Grid>
         </Container>
-      </Box>): (
-                <Box sx={{ display: "flex" }}>
-                  <CircularProgress />
-                </Box>
-              )}
+      </Box>
     </>
   );
 };
 
-export default PopularMovieDetail;
+export default TvShowDetail;

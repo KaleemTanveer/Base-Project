@@ -115,7 +115,7 @@ function CircularProgressWithLabel(props) {
     display: "inline-flex",
     bgcolor: "black",
     borderRadius: "100%",
-    p: 0.3,
+    p: 0.01,
     mx: 2,
     mt: -2.6,
   };
