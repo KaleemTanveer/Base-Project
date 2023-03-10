@@ -19,7 +19,7 @@ function* nowPlayingMovie(props) {
   let data = yield axios.get(
     `https://api.themoviedb.org/3/movie/now_playing?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=${props.page}`
   );
-    // console.log(data.data);
+  // console.log(data.data);
   yield put({
     type: "SAGA_NOW_PLAYING",
     payload: {
@@ -59,11 +59,15 @@ function* popularMovieDetail(id) {
   let data = yield axios.get(
     `https://api.themoviedb.org/3/movie/${id.movieId}?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US`
   );
-console.log(data);
+  let review = yield axios.get(
+    `https://api.themoviedb.org/3/movie/${id.movieId}/reviews?api_key=fd51a367f88926fa40d83760311ca74a&language=en-US&page=1`
+  );
+  console.log(data);
   yield put({
     type: "SAGA_POPULAR_MOVIE_DETAIL",
     payload: {
       data: data.data,
+      review: review.data,
     },
   });
 }
@@ -71,7 +75,7 @@ function* trendingMovie() {
   let data = yield axios.get(
     "https://api.themoviedb.org/3/trending/all/day?api_key=fd51a367f88926fa40d83760311ca74a"
   );
-    // console.log(data.data);
+  // console.log(data.data);
   yield put({
     type: "SAGA_TRENDING_MOVIE",
     payload: {

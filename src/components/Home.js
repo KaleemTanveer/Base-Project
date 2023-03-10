@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import home from "../assets/home.jfif";
-import { Typography, Box, TextField,InputAdornment,Button } from "@mui/material";
+import {
+  Typography,
+  Box,
+  TextField,
+  InputAdornment,
+  Button,
+} from "@mui/material";
 const Home = () => {
+  const [input, setInput] = useState("");
+  console.log(input);
   const styles = {
-    // paperContainer: {
-    //   // backgroundImage: `url(${posterImage})`,
-    //   backgroundSize: "cover",
-    //   backgroundRepeat: "no-repeat",
-    //   color: "white",
-    //   minHeight: "400px",
-    // },
+    paperContainer: {
+      // backgroundImage: `url(${posterImage})`,
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      color: "white",
+      minHeight: "400px",
+    },
     inputField: {
-      mt:"20px",
+      mt: "20px",
       width: "90%",
       height: "30px",
       border: 0,
@@ -49,7 +57,7 @@ const Home = () => {
         variant="h3"
         sx={{
           pt: 6,
-          pl:2,
+          pl: 2,
           color: "white",
         }}
       >
@@ -59,38 +67,37 @@ const Home = () => {
         variant="h4"
         sx={{
           color: "white",
-          pt:2,
-          pl:2
-          
+          pt: 2,
+          pl: 2,
         }}
       >
         Millions of movies, TV shows and people to discover. Explore now.
       </Typography>
       <Box mt={5}>
-      <TextField 
-        placeholder="Search for a movie, tv show, people"
-        InputLabelProps={{ shrink: false }}
-        id="input-with-icon-textfield"
-        sx={styles.inputField}
-        // onChange={(e) => setInput(e.target.value)}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment
-              className="searchbtn"
-              position="start"
-              sx={{ height: "46px", marginRight: "0px" }}
-            >
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{ height: "46px", borderRadius: "50px" }}
+        <TextField
+          placeholder="Search for a movie, tv show, people"
+          InputLabelProps={{ shrink: false }}
+          id="input-with-icon-textfield"
+          sx={styles.inputField}
+          onChange={(e) => setInput(e.target.value)}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment
+                className="searchbtn"
+                position="start"
+                sx={{ height: "46px", marginRight: "0px" }}
               >
-                Search
-              </Button>
-            </InputAdornment>
-          ),
-        }}
-      />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{ height: "46px", borderRadius: "50px" }}
+                >
+                  Search
+                </Button>
+              </InputAdornment>
+            ),
+          }}
+        />
       </Box>
     </Box>
   );

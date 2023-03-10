@@ -42,6 +42,7 @@ const UpCompingMovieCard = () => {
     });
   };
   let type = "UP_COMING_MOVIE";
+  
   return (
     <>
       <Container>
