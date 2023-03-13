@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+
 const PopularPeopleCard = () => {
   const popularPeople = useSelector((state) => state.People.popularPeople);
 
@@ -36,6 +37,7 @@ const PopularPeopleCard = () => {
           {popularPeople?.map((people) => {
             return (
               <Grid item key={people.id}>
+              
                 <Card
                   sx={{
                     minWidth: 235,

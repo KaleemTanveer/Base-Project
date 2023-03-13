@@ -13,6 +13,7 @@ import PopularPeople from "./pages/PopularPeople";
 import PopularMovieDetailPage from "./pages/PopularMovieDetailPage";
 import PopularTvShowCard from "./components/PopularTvShowCard";
 import TvShowDetail from "./components/TvShowDetail";
+import SearchPage from "./pages/SearchPage";
 function App() {
   return (
     <>
@@ -29,6 +30,7 @@ function App() {
           <Route path="/populartvshow" element={<PopularTvShowCard />} />
           <Route path="/populartvshow/:id" element={<TvShowDetail />} />
           <Route path="/popularpeople" element={<PopularPeople />} />
+          <Route path="/search" element={<SearchPage/>} />
         </Route>
       </Routes>
 

@@ -63,13 +63,13 @@ const Movies = (state = initialState, action) => {
         };
       }
     case "SAGA_POPULAR_MOVIE_DETAIL":
-      // console.log(action.data.data);
+      
       return {
         popularMovieDetail: action.payload.data,
         popularMovieReview: [...action.payload.review.results],
       };
     case "SAGA_TRENDING_MOVIE":
-      // console.log(action.data.data);
+      
       return {
         trendingMovie: [...action.payload.data.results],
       };

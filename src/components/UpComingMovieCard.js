@@ -130,7 +130,7 @@ const UpCompingMovieCard = () => {
                         key={movie.id}
                         vote={movie.vote_average * 10}
                       />
-                      <CardContent>
+                      <CardContent sx={{height:"100px"}}>
                         <Typography
                           gutterBottom
                           fontWeight="bold"

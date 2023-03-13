@@ -24,11 +24,10 @@ import PercentageProgress from "./Progress";
 import abc from "../assets/abc.jpg";
 import { useSelector } from "react-redux";
 import LoadMoreButton from "./LoadMoreButton";
-const PopularMovieCard = () => {
+const SearchMovie = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const popularMovies = useSelector((state) => state.Movies.popularMovie);
-
+  const search = useSelector((state) => state.Search.search);
   const getId = (id) => {
     navigate(`/popular/${id}`);
   };
@@ -42,72 +41,19 @@ const PopularMovieCard = () => {
       page: count,
     });
   };
-  let type = "POPULAR_MOVIE";
+
   return (
     <>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={12} md={12} lg={3}>
-            <Typography sx={{ mt: 4, fontWeight: "bold" }} variant="h5">
-              Popular Movies
-            </Typography>
-            <Accordion sx={{ my: 2 }}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>Sort</Typography>
-              </AccordionSummary>
-              <Divider />
-              <AccordionDetails>
-                <Typography variant="h7">Sort Result By</Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>Filters</Typography>
-              </AccordionSummary>
-              <Divider />
-              <AccordionDetails>
-                <Typography>Show Me</Typography>
-              </AccordionDetails>
-              <Divider />
-              <AccordionDetails>
-                <Typography>Availabilities</Typography>
-              </AccordionDetails>
-              <Divider />
-              <AccordionDetails>
-                <Typography>Release Dates</Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion sx={{ my: 2 }}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>Where To Watch</Typography>
-              </AccordionSummary>
-              <Divider />
-              <AccordionDetails>
-                <Typography variant="h7">My Services</Typography>
-              </AccordionDetails>
-              <Divider />
-              <AccordionDetails>
-                <Typography variant="h7">Country</Typography>
-              </AccordionDetails>
-            </Accordion>
+            
           </Grid>
           <Grid item marginTop={4} xs={12} sm={12} md={12} lg={9}>
             <Grid container align="center" spacing={2}>
-              {popularMovies ? (
+              {search ? (
                 <>
-                  {popularMovies.map((movie, i) => {
+                  {search.map((movie, i) => {
                     return (
                       <Grid
                         key={i}
@@ -158,7 +104,7 @@ const PopularMovieCard = () => {
               ) : (
                 <Skeleton variant="rectangular" width={210} height={200} />
               )}
-              <LoadMoreButton type={type} />
+              {/* <LoadMoreButton type={type} /> */}
             </Grid>
           </Grid>
         </Grid>
@@ -167,4 +113,4 @@ const PopularMovieCard = () => {
   );
 };
 
-export default PopularMovieCard;
+export default SearchMovie;

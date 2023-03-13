@@ -7,9 +7,23 @@ import {
   InputAdornment,
   Button,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [input, setInput] = useState("");
-  console.log(input);
+  const [submitClicked, setSubmitClicked] = useState(true);
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
+  React.useEffect(() => {
+    if (input ) {
+      var getData = setTimeout(() => {
+        navigate(`/search`);
+        // console.log("kaleem");
+        dispatch({ type: "SEARCH", action: { query: input, page: 1 } });
+      }, 2000);
+    }
+    return () => clearTimeout(getData);
+  }, [input]);
   const styles = {
     paperContainer: {
       // backgroundImage: `url(${posterImage})`,

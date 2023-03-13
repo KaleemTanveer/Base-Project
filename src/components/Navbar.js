@@ -139,7 +139,7 @@ const NavBar = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {/* --------------------------Movie-------------------------- */}
+            {/* Movie */}
 
             <Button
               onClick={handleOpenUserMenu}
@@ -176,7 +176,7 @@ const NavBar = () => {
               ))}
             </Menu>
 
-            {/* --------------------------------TV Show--------------------------------- */}
+           {/* TV Show */}
 
             <Button
               onClick={handleOpenUserMenu1}
@@ -213,7 +213,7 @@ const NavBar = () => {
               ))}
             </Menu>
 
-            {/* ---------------------------------People-------------------------------- */}
+          {/* People */}
 
             <Button
               onClick={handleOpenUserMenu2}
